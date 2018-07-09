@@ -1,21 +1,45 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# Retrofit2
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
+-keepclassmembers class ** {
+   @retrofit2.http.Body <methods>;
+   @retrofit2.http.GET <methods>;
+   @retrofit2.http.POST <methods>;
+   @retrofit2.http.Query <methods>;
+}
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-dontwarn com.squareup.okhttp.** # Fresco
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# NetworkBus 2.0
+-keepclassmembers class ** {
+   @com.monitise.mea.android.network.bus.OnResponse <methods>;
+   @com.monitise.mea.android.network.bus.OnError <methods>;
+}
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Excluded Network dependency
+-dontwarn !com.monitise.mea.android.network.bus.**
+-dontwarn !com.monitise.mea.android.network.common.**
+-dontwarn com.monitise.mea.android.network.**
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Fragment Args
+-keep class com.hannesdorfmann.fragmentargs.** { *; }
+
+# Fresco
+# Keep our interfaces so they can be used by other ProGuard rules.
+# See http://sourceforge.net/p/proguard/bugs/466/
+-keep,allowobfuscation @interface com.facebook.common.internal.DoNotStrip
+
+# Do not strip any method/class that is annotated with @DoNotStrip
+-keep @com.facebook.common.internal.DoNotStrip class *
+-keepclassmembers class * {
+   @com.facebook.common.internal.DoNotStrip *;
+}
+# Keep native methods
+-keepclassmembers class * {
+   native <methods>;
+}
+
+-dontwarn javax.annotation.**
