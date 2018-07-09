@@ -18,7 +18,7 @@ buildscript {
             fragmentargs            : "3.0.2",
             okhttp                  : "3.9.0",
             gson                    : "2.8.0",
-            lottie                  : "2.5.0",
+            lottie                  : "2.5.5",
             fresco                  : "1.9.0",
             monitise_core           : "2.4.0",
             monitise_ui             : "2.7.0-SNAPSHOT",
@@ -26,7 +26,8 @@ buildscript {
             monitise_mvp            : "4.0.0",
             monitise_networkbus     : "2.0.0",
             monitise_retrofit       : "2.1.0",
-            monitise_caki           : "1.0.0-SNAPSHOT"
+            monitise_caki           : "1.0.0-SNAPSHOT",
+            network                 : "2.1.0"
     ]
 
     repositories {

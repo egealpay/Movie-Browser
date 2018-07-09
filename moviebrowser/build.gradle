@@ -1,8 +1,8 @@
 apply from: 'http://f5.pozitron.com/android/monitise-android-app.gradle'
-
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
-apply plugin: 'kotlin-android-extensions'
+def TMDB_API_KEY = "\"65dd7f149cc5dc1f35fbedbc35c534ed\""
 
 monitise {
     projectName = 'MovieBrowser'
@@ -16,6 +16,7 @@ android {
         targetSdkVersion config.targetSdkVersion
         versionCode 1
         versionName "1.0.0"
+        buildConfigField 'String', 'TMDB_API_KEY', TMDB_API_KEY
     }
     buildTypes {
         debug {
@@ -51,6 +52,23 @@ dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:${libraries.kotlin}"
     implementation "com.android.support:appcompat-v7:${libraries.support}"
     implementation "com.android.support.constraint:constraint-layout:${libraries.constraintLayout}"
+    implementation "com.android.support:design:${libraries.support}"
+    implementation "com.android.support:gridlayout-v7:${libraries.support}"
+
+    //Fresco
+    implementation "com.facebook.fresco:fresco:${libraries.fresco}"
+    implementation "com.facebook.fresco:webpsupport:${libraries.fresco}"
+
+    //Lottie
+    implementation "com.airbnb.android:lottie:${libraries.lottie}"
+
+    //Butterknife
+    implementation "com.jakewharton:butterknife:${libraries.butterknife}"
+    kapt "com.jakewharton:butterknife-compiler:${libraries.butterknife}"
+
+    //FragmentArgs
+    implementation "com.hannesdorfmann.fragmentargs:annotation:${libraries.fragmentargs}"
+    kapt "com.hannesdorfmann.fragmentargs:processor:${libraries.fragmentargs}"
 
     //Monitise Common Libs.
     implementation("com.monitise.mea.android:commons-core:${libraries.monitise_core}@aar") {
@@ -61,4 +79,5 @@ dependencies {
     implementation "com.monitise.mea.android:networkbus:${libraries.monitise_networkbus}"
     implementation "com.monitise.mea.android:retrofit:${libraries.monitise_retrofit}"
     implementation "com.monitise.mea.android:caki:${libraries.monitise_caki}@aar"
+    implementation "com.monitise.mea.android:network:${libraries.network}"
 }
