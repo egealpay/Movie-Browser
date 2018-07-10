@@ -1,16 +1,16 @@
 package com.alpaye.moviebrowser.ui.dashboard
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import butterknife.BindView
 import com.alpaye.moviebrowser.R
 import com.alpaye.moviebrowser.core.BaseFragment
+import com.monitise.mea.android.ui.views.MTSEndlessRecyclerView
 
 abstract class DashboardListFragment : BaseFragment() {
 
-    @BindView(R.id.dashboardlist_fragment_recyclerview)
-    lateinit var dashboardRecyclerView: RecyclerView
+    @BindView(R.id.fragment_dashboard_list_recyclerview)
+    lateinit var endlessRecyclerViewDashboard: MTSEndlessRecyclerView
 
     override fun getResourceLayoutId() = R.layout.fragment_dashboard_list
 

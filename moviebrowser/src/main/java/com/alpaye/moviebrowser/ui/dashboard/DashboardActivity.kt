@@ -21,10 +21,10 @@ class DashboardActivity : BaseActivity() {
     lateinit var viewPagerDashboard: ViewPager
 
     @BindView(R.id.activity_dashboard_toolbar)
-    lateinit var toolbar: Toolbar
+    lateinit var toolbarDashboard: Toolbar
 
     @BindView(R.id.drawer_layout)
-    lateinit var mDrawerLayout: DrawerLayout
+    lateinit var drawerLayout: DrawerLayout
 
     @BindView(R.id.activity_dashboard_toolbar_searchview)
     lateinit var searchView: SearchView
@@ -38,7 +38,7 @@ class DashboardActivity : BaseActivity() {
 
         return when (item?.itemId) {
             android.R.id.home -> {
-                mDrawerLayout.openDrawer(GravityCompat.START)
+                drawerLayout.openDrawer(GravityCompat.START)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -50,7 +50,7 @@ class DashboardActivity : BaseActivity() {
 
         super.onCreate(savedInstanceState)
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(toolbarDashboard)
 
         val actionBar: ActionBar? = supportActionBar
         actionBar?.apply {
@@ -62,9 +62,10 @@ class DashboardActivity : BaseActivity() {
         editText.setTextColor(ContextCompat.getColor(this, R.color.colorWhite))
         editText.setHintTextColor(ContextCompat.getColor(this, R.color.colorWhite))
 
-        val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
-        viewPagerDashboard.adapter = viewPagerAdapter
+        val dashboardPagerAdapter = DashboardPagerAdapter(supportFragmentManager)
+        viewPagerDashboard.adapter = dashboardPagerAdapter
         tabLayout.setupWithViewPager(viewPagerDashboard)
+
 
     }
 

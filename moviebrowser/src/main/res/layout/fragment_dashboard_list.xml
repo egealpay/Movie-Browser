@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.monitise.mea.android.ui.views.MTSEndlessRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/dashboardlist_fragment_recyclerview"
+    android:id="@+id/fragment_dashboard_list_recyclerview"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />

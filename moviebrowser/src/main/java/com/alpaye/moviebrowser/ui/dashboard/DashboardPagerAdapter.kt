@@ -8,9 +8,9 @@ import com.alpaye.moviebrowser.ui.dashboard.items.PopularFragmentBuilder
 import com.alpaye.moviebrowser.ui.dashboard.items.TopRatedFragmentBuilder
 import com.alpaye.moviebrowser.ui.dashboard.items.UpComingFragmentBuilder
 
-const val SIZE: Int = 4
+private const val SIZE: Int = 4
 
-class ViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+class DashboardPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
 
     override fun getItem(position: Int): Fragment {
         return when (position) {

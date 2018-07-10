@@ -12,6 +12,11 @@
             android:icon="@drawable/ic_settings_24"
             android:title="@string/drawer_item_settings" />
 
+        <item
+            android:id="@+id/drawer_view_item_licences"
+            android:icon="@drawable/ic_licence_24"
+            android:title="@string/drawer_item_licences" />
+
     </group>
 
 </menu>
