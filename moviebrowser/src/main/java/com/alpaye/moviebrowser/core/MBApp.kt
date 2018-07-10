@@ -1,5 +1,6 @@
 package com.alpaye.moviebrowser.core
 
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.gson.Gson
 import com.monitise.mea.android.core.MTSApp
 import com.monitise.mea.android.network.converter.MTSGsonConverter
@@ -19,6 +20,7 @@ class MBApp : MTSApp() {
                 .readActionsFrom(ACTIONS_FILENAME)
                 .setUrlKey(BASE_URL_KEY)
                 .setConverter(MTSGsonConverter(Gson())))
+        Fresco.initialize(this)
     }
 
 }

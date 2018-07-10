@@ -5,7 +5,7 @@ import com.alpaye.moviebrowser.R
 import com.monitise.mea.android.ui.views.MTSEndlessRecyclerAdapter
 
 class MoviesRecyclerAdapter(
-        private val movieList: ArrayList<Movie>
+        private val movieList: ArrayList<Movie> = ArrayList()
 ) : MTSEndlessRecyclerAdapter<MovieViewHolder>(R.layout.layout_list_loading) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -20,5 +20,12 @@ class MoviesRecyclerAdapter(
     override fun getEndlessItemViewType(position: Int) = 0
 
     override fun getEndlessItemCount() = movieList.size
+
+    fun updateList(movies: ArrayList<Movie>?) {
+        movies?.let {
+            movieList.addAll(it)
+            notifyDataSetChanged()
+        }
+    }
 
 }
