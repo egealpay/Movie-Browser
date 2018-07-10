@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
 
     <ImageView
@@ -10,35 +10,28 @@
         android:layout_width="100dp"
         android:layout_height="120dp"
         android:layout_marginStart="8dp"
-        tools:src="@drawable/profile_picture"/>
+        tools:src="@drawable/profile_picture" />
 
     <LinearLayout
-        android:paddingTop="8dp"
-        android:paddingStart="8dp"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/list_item_textview_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            tools:text="Star Wars"/>
+            android:layout_marginBottom="8dp"
+            tools:text="Star Wars" />
 
         <TextView
-            android:id="@+id/list_item_textview_releasedate"
+            android:id="@+id/list_item_textview_overview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            tools:text="17 May 1990"/>
-
-        <TextView
-            android:id="@+id/list_item_textview_vote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            tools:text="3.4"/>
+            android:ellipsize="end"
+            android:maxLines="3"
+            tools:text="Three decades after the Empire's defeat, a new threat arises in the militant First Order. Stormtrooper defector Finn and the scavenger Rey are caught up in the Resistance's search for the missing Luke Skywalker." />
 
     </LinearLayout>
 

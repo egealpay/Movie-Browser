@@ -1,3 +1,10 @@
 package com.alpaye.moviebrowser.ui.dashboard
 
-data class Movie(val poster: String, val title: String, val release_date: String, val vote_average: Double)
+import com.google.gson.annotations.SerializedName
+
+data class Movie(
+        @SerializedName("id") val id: Int,
+        @SerializedName("poster_path") val poster: String,
+        @SerializedName("title") val title: String,
+        @SerializedName("overview") val overview: String
+)
