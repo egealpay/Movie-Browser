@@ -55,6 +55,9 @@ dependencies {
     implementation "com.android.support:design:${libraries.support}"
     implementation "com.android.support:gridlayout-v7:${libraries.support}"
 
+    //Rounded ImageView
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
     //Fresco
     implementation "com.facebook.fresco:fresco:${libraries.fresco}"
     implementation "com.facebook.fresco:webpsupport:${libraries.fresco}"

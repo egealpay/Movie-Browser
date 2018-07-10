@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Onboarding-Android-MovieBrowser-EgeAlpay</string>
+    <string name="toolbar_title">Movies</string>
+    <string name="tabitem_upcoming">Upcoming</string>
+    <string name="tabitem_nowplaying">Now Playing</string>
+    <string name="tabitem_popular">Popular</string>
+    <string name="tabitem_toprating">Top Rating</string>
+    <string name="drawer_item_settings">Settings</string>
+    <string name="drawer_item_favorites">Favorites</string>
+    <string name="nav_header_fullname" translatable="false">Ege Alpay</string>
+    <string name="nav_header_email" translatable="false">ege.alpay@commencis.com</string>
 </resources>
