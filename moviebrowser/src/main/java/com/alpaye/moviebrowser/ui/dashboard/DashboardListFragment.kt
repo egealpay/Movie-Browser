@@ -7,9 +7,13 @@ import android.view.View
 import butterknife.BindView
 import com.alpaye.moviebrowser.R
 import com.alpaye.moviebrowser.core.BaseFragment
+import com.alpaye.moviebrowser.ui.moviedetails.MovieDetailsActivity
+import com.monitise.mea.android.ui.adapters.MTSViewHolder
 import com.monitise.mea.android.ui.views.MTSEndlessRecyclerView
 
-abstract class DashboardListFragment : BaseFragment(), MTSEndlessRecyclerView.OnEndReachedListener {
+abstract class DashboardListFragment : BaseFragment(),
+        MTSEndlessRecyclerView.OnEndReachedListener,
+        MTSViewHolder.OnItemClickListener {
 
     @BindView(R.id.fragment_dashboard_list_recyclerview)
     lateinit var endlessRecyclerViewDashboard: MTSEndlessRecyclerView
@@ -18,7 +22,7 @@ abstract class DashboardListFragment : BaseFragment(), MTSEndlessRecyclerView.On
 
     private var pageIndex = 1
 
-    protected val adapterMovies: MoviesRecyclerAdapter = MoviesRecyclerAdapter()
+    protected val adapterMovies: MoviesRecyclerAdapter by lazy { MoviesRecyclerAdapter(listener = this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +42,13 @@ abstract class DashboardListFragment : BaseFragment(), MTSEndlessRecyclerView.On
     override fun onEndReached() {
         endlessRecyclerViewDashboard.setLoading(true)
         getMovies(++pageIndex)
+    }
+
+    override fun onItemClick(itemView: View, position: Int) {
+        startActivity(MovieDetailsActivity.newIntent(context!!,
+                adapterMovies.getMovieItemId(position),
+                adapterMovies.getMovieItemTitle(position))
+        )
     }
 
     abstract fun getMovies(page: Int)

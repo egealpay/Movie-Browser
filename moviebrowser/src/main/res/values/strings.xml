@@ -10,4 +10,8 @@
     <string name="drawer_item_licences">Licences</string>
     <string name="nav_header_fullname" translatable="false">Ege Alpay</string>
     <string name="nav_header_email" translatable="false">ege.alpay@commencis.com</string>
+    <string name="details_key_released">Released</string>
+    <string name="details_key_runtime">Runtime</string>
+    <string name="details_key_budget">Budget</string>
+    <string name="overview">Three decades after the Empire\'s defeat, a new threat arises in the militant First Order. Stormtrooper defector Finn and the scavenger Rey are caught up in the Resistance\'s search for the missing Luke Skywalker.</string>
 </resources>

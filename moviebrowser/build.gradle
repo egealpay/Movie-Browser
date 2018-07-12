@@ -11,7 +11,7 @@ monitise {
 android {
     compileSdkVersion config.compileSdkVersion
     defaultConfig {
-        applicationId "com.alpaye.onboarding_android_moviebrowser_egealpay"
+        applicationId "com.alpaye.moviebrowser"
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
         versionCode 1
