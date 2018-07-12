@@ -13,5 +13,7 @@
     <string name="details_key_released">Released</string>
     <string name="details_key_runtime">Runtime</string>
     <string name="details_key_budget">Budget</string>
-    <string name="overview">Three decades after the Empire\'s defeat, a new threat arises in the militant First Order. Stormtrooper defector Finn and the scavenger Rey are caught up in the Resistance\'s search for the missing Luke Skywalker.</string>
+    <string name="settings_language">Language: </string>
+    <string name="settings_language_english">English</string>
+    <string name="settings_language_turkish">Turkish</string>
 </resources>

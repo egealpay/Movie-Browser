@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="toolbar_title">Filmler</string>
+    <string name="fragment_upcoming">Önümüzdekiler</string>
+    <string name="fragment_nowplaying">Vizyondakiler</string>
+    <string name="fragment_popular">Popüler</string>
+    <string name="fragment_toprating">En Çok Oy Alanlar</string>
+    <string name="drawer_item_settings">Ayarlar</string>
+    <string name="drawer_item_favorites">Favoriler</string>
+    <string name="drawer_item_licences">Lisans</string>
+    <string name="details_key_released">Yayınlanma Tarihi</string>
+    <string name="details_key_runtime">Süre</string>
+    <string name="details_key_budget">Bütçe</string>
+    <string name="settings_language">Dil: </string>
+    <string name="settings_language_english">İngilizce</string>
+    <string name="settings_language_turkish">Türkçe</string>
+</resources>

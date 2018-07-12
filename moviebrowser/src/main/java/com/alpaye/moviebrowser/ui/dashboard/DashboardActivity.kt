@@ -1,6 +1,7 @@
 package com.alpaye.moviebrowser.ui.dashboard
 
 import android.os.Bundle
+import android.support.design.widget.NavigationView
 import android.support.design.widget.TabLayout
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
@@ -15,8 +16,11 @@ import butterknife.BindView
 import com.alpaye.moviebrowser.R
 import com.alpaye.moviebrowser.core.BaseActivity
 import com.alpaye.moviebrowser.ui.moviesearch.SearchResultActivity
+import com.alpaye.moviebrowser.ui.settings.SettingsActivity
 
-class DashboardActivity : BaseActivity(), SearchView.OnQueryTextListener {
+class DashboardActivity : BaseActivity(),
+        SearchView.OnQueryTextListener,
+        NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.activity_dashboard_viewpager)
     lateinit var viewPagerDashboard: ViewPager
@@ -26,6 +30,9 @@ class DashboardActivity : BaseActivity(), SearchView.OnQueryTextListener {
 
     @BindView(R.id.drawer_layout)
     lateinit var drawerLayout: DrawerLayout
+
+    @BindView(R.id.nav_view)
+    lateinit var navigationView: NavigationView
 
     @BindView(R.id.activity_dashboard_toolbar_searchview)
     lateinit var searchView: SearchView
@@ -61,12 +68,12 @@ class DashboardActivity : BaseActivity(), SearchView.OnQueryTextListener {
         editText.setTextColor(ContextCompat.getColor(this, R.color.colorWhite))
         editText.setHintTextColor(ContextCompat.getColor(this, R.color.colorWhite))
 
-        val dashboardPagerAdapter = DashboardPagerAdapter(supportFragmentManager)
+        val dashboardPagerAdapter = DashboardPagerAdapter(this, supportFragmentManager)
         viewPagerDashboard.adapter = dashboardPagerAdapter
         tabLayout.setupWithViewPager(viewPagerDashboard)
 
         searchView.setOnQueryTextListener(this)
-
+        navigationView.setNavigationItemSelectedListener(this)
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -75,6 +82,14 @@ class DashboardActivity : BaseActivity(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
+        return true
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.drawer_view_item_settings -> startActivity(SettingsActivity.newIntent(this))
+        }
+        drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 

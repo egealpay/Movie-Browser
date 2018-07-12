@@ -2,15 +2,16 @@ package com.alpaye.moviebrowser.network
 
 import android.media.MediaFormat.KEY_LANGUAGE
 import com.alpaye.moviebrowser.BuildConfig
+import com.alpaye.moviebrowser.core.MBApp
 import com.android.volley.AuthFailureError
 import com.monitise.mea.android.network.bus.NetworkBus
 import com.monitise.mea.android.network.bus.NetworkSubscriber
 import com.monitise.mea.android.network.core.MTSError
 import com.monitise.mea.android.network.core.MTSNetworkStack
 import com.monitise.mea.android.network.requests.MTSBaseRequest
+import com.monitise.mea.android.utils.MTSLanguageUtil
 import java.util.*
 
-private const val KEY_LANGUAGE = "Accept-Language"
 private const val API_KEY_KEY = "api_key"
 private const val PAGE_QUERY_KEY = "page"
 private const val SEARCH_QUERY_KEY = "query"
@@ -20,7 +21,10 @@ abstract class BaseRequest<T : BaseRequestModel, V : BaseResponseModel> : MTSBas
 
     init {
         addQueryParameter(API_KEY_KEY, BuildConfig.TMDB_API_KEY)
-        //TODO Add Language Parameter
+        addQueryParameter(
+                LANGUAGE_QUERY_KEY,
+                MTSLanguageUtil.Preferences.getLocale(MBApp.instance)?.language
+        )
     }
 
     override fun deliverResponse(response: V) {

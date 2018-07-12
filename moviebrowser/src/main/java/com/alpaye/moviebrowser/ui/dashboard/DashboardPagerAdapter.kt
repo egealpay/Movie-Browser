@@ -1,8 +1,10 @@
 package com.alpaye.moviebrowser.ui.dashboard
 
+import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.alpaye.moviebrowser.R
 import com.alpaye.moviebrowser.ui.dashboard.items.NowPlayingFragmentBuilder
 import com.alpaye.moviebrowser.ui.dashboard.items.PopularFragmentBuilder
 import com.alpaye.moviebrowser.ui.dashboard.items.TopRatedFragmentBuilder
@@ -10,7 +12,10 @@ import com.alpaye.moviebrowser.ui.dashboard.items.UpComingFragmentBuilder
 
 private const val SIZE: Int = 4
 
-class DashboardPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+class DashboardPagerAdapter(
+        private val context: Context,
+        fragmentManager: FragmentManager
+) : FragmentPagerAdapter(fragmentManager) {
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
@@ -28,10 +33,10 @@ class DashboardPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAda
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
-            0 -> "Upcoming"
-            1 -> "Now Playing"
-            2 -> "Popular"
-            3 -> "Top Rated"
+            0 -> context.resources.getString(R.string.fragment_upcoming)
+            1 -> context.resources.getString(R.string.fragment_nowplaying)
+            2 -> context.resources.getString(R.string.fragment_popular)
+            3 -> context.resources.getString(R.string.fragment_toprating)
             else -> throw IllegalArgumentException("Unexpected position")
         }
     }

@@ -112,8 +112,7 @@
                 android:id="@+id/activity_movie_details_textview_overview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                tools:text="@string/overview" />
+                android:layout_margin="8dp" />
 
             <com.monitise.mea.android.ui.views.MTSLinearLayout
                 android:layout_width="match_parent"
