@@ -9,14 +9,9 @@ import com.monitise.mea.android.network.bus.OnResponse
 @FragmentWithArgs
 class UpComingFragment : DashboardListFragment() {
 
-    override fun getMovies(page: Int) {
-        addRequest(UpComingRequest(page))
-    }
+    override fun getMovies(page: Int) = addRequest(UpComingRequest(page))
 
     @OnResponse
-    fun onResponseNowPlaying(response: UpComingResponse) {
-        endlessRecyclerViewDashboard.setLoading(false)
-        adapterMovies.updateList(response.movies)
-    }
+    fun onResponseUpComing(response: UpComingResponse) = updateList(response.movies)
 
 }

@@ -9,14 +9,9 @@ import com.monitise.mea.android.network.bus.OnResponse
 @FragmentWithArgs
 class PopularFragment : DashboardListFragment() {
 
-    override fun getMovies(page: Int) {
-        addRequest(PopularRequest(page))
-    }
+    override fun getMovies(page: Int) = addRequest(PopularRequest(page))
 
     @OnResponse
-    fun onResponseNowPlaying(response: PopularResponse) {
-        endlessRecyclerViewDashboard.setLoading(false)
-        adapterMovies.updateList(response.movies)
-    }
+    fun onResponsePopuler(response: PopularResponse) = updateList(response.movies)
 
 }

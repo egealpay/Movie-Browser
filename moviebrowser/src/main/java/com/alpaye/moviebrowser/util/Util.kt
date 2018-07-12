@@ -1,4 +1,4 @@
-package com.alpaye.moviebrowser.ui.util
+package com.alpaye.moviebrowser.util
 
 import android.content.Context
 import android.content.Intent

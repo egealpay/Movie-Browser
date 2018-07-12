@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Onboarding-Android-MovieBrowser-EgeAlpay</string>
+    <string name="app_name" translatable="false">MovieBrowser</string>
     <string name="toolbar_title">Movies</string>
     <string name="fragment_upcoming">Upcoming</string>
     <string name="fragment_nowplaying">Now Playing</string>

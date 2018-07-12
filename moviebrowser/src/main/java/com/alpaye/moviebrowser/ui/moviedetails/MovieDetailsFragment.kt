@@ -13,7 +13,7 @@ import com.alpaye.moviebrowser.R
 import com.alpaye.moviebrowser.core.BaseFragment
 import com.alpaye.moviebrowser.network.request.MovieDetailRequest
 import com.alpaye.moviebrowser.network.response.MovieDetailResponseModel
-import com.alpaye.moviebrowser.ui.util.Util
+import com.alpaye.moviebrowser.util.Util
 import com.facebook.drawee.view.SimpleDraweeView
 import com.monitise.mea.android.network.bus.OnResponse
 import com.monitise.mea.android.network.core.MTSNetworkStack

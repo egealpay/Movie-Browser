@@ -39,9 +39,15 @@ abstract class DashboardListFragment : BaseFragment(),
         }
     }
 
+    protected fun updateList(movies: ArrayList<Movie>?){
+        pageIndex++
+        endlessRecyclerViewDashboard.setLoading(false)
+        adapterMovies.updateList(movies)
+    }
+
     override fun onEndReached() {
         endlessRecyclerViewDashboard.setLoading(true)
-        getMovies(++pageIndex)
+        getMovies(pageIndex)
     }
 
     override fun onItemClick(itemView: View, position: Int) {

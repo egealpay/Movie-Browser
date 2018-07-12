@@ -14,8 +14,9 @@ import android.widget.EditText
 import butterknife.BindView
 import com.alpaye.moviebrowser.R
 import com.alpaye.moviebrowser.core.BaseActivity
+import com.alpaye.moviebrowser.ui.moviesearch.SearchResultActivity
 
-class DashboardActivity : BaseActivity() {
+class DashboardActivity : BaseActivity(), SearchView.OnQueryTextListener {
 
     @BindView(R.id.activity_dashboard_viewpager)
     lateinit var viewPagerDashboard: ViewPager
@@ -47,9 +48,7 @@ class DashboardActivity : BaseActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-
         setSupportActionBar(toolbarDashboard)
 
         val actionBar: ActionBar? = supportActionBar
@@ -66,7 +65,17 @@ class DashboardActivity : BaseActivity() {
         viewPagerDashboard.adapter = dashboardPagerAdapter
         tabLayout.setupWithViewPager(viewPagerDashboard)
 
+        searchView.setOnQueryTextListener(this)
 
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        startActivity(SearchResultActivity.newIntent(this, query!!))
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return true
     }
 
 }

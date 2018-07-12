@@ -13,6 +13,7 @@ import java.util.*
 private const val KEY_LANGUAGE = "Accept-Language"
 private const val API_KEY_KEY = "api_key"
 private const val PAGE_QUERY_KEY = "page"
+private const val SEARCH_QUERY_KEY = "query"
 private const val LANGUAGE_QUERY_KEY = "language"
 
 abstract class BaseRequest<T : BaseRequestModel, V : BaseResponseModel> : MTSBaseRequest<V>() {
@@ -41,6 +42,8 @@ abstract class BaseRequest<T : BaseRequestModel, V : BaseResponseModel> : MTSBas
     protected fun getPageQueryKey(): String {
         return PAGE_QUERY_KEY
     }
+
+    protected fun getSearchQueryKey(): String = SEARCH_QUERY_KEY
 
     @Throws(AuthFailureError::class)
     override fun getHeaders(): Map<String, String> {
