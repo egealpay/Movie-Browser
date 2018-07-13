@@ -31,6 +31,8 @@ class MoviesRecyclerAdapter(
         }
     }
 
+    fun getMovies() = movieList
+
     fun getMovieItemId(position: Int): Int = movieList[position].id
 
     fun getMovieItemTitle(position: Int): String = movieList[position].title

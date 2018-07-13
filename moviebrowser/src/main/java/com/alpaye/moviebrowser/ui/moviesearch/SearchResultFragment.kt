@@ -17,6 +17,10 @@ import com.monitise.mea.android.network.bus.OnResponse
 import com.monitise.mea.android.ui.adapters.MTSViewHolder
 import com.monitise.mea.android.ui.views.MTSEndlessRecyclerView
 
+private const val KEY_POSITION_INDEX = "positionIndex"
+private const val KEY_PAGE_INDEX = "pageIndex"
+private const val KEY_MOVIES = "movies"
+
 class SearchResultFragment : BaseFragment(),
         MTSEndlessRecyclerView.OnEndReachedListener,
         MTSViewHolder.OnItemClickListener {
@@ -40,10 +44,26 @@ class SearchResultFragment : BaseFragment(),
     lateinit var endlessRecyclerViewSearchResult: MTSEndlessRecyclerView
 
     private var pageIndex = 1
+    private var positionIndex = 0
 
-    protected val adapterMovies: MoviesRecyclerAdapter by lazy { MoviesRecyclerAdapter(listener = this) }
+    private lateinit var adapterMovies: MoviesRecyclerAdapter
 
     override fun getResourceLayoutId() = R.layout.fragment_search_result
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (null == savedInstanceState) {
+            adapterMovies = MoviesRecyclerAdapter(listener = this)
+            addRequest(MovieSearchRequest(arguments?.getString(SearchResultFragment.KEY_SEARCH_MOVIE_TITLE)!!, pageIndex))
+        } else {
+            positionIndex = savedInstanceState.getInt(KEY_POSITION_INDEX)
+            pageIndex = savedInstanceState.getInt(KEY_PAGE_INDEX)
+            adapterMovies = MoviesRecyclerAdapter(
+                    savedInstanceState.getParcelableArrayList(KEY_MOVIES),
+                    this
+            )
+        }
+    }
 
     override fun initUserInterface(inflater: LayoutInflater, rootView: View) {
         super.initUserInterface(inflater, rootView)
@@ -57,9 +77,18 @@ class SearchResultFragment : BaseFragment(),
             adapter = adapterMovies
             setLoading(false)
             setOnEndReachedListener(this@SearchResultFragment)
+            scrollToPosition(positionIndex)
         }
         addRequest(MovieSearchRequest(arguments?.getString(SearchResultFragment.KEY_SEARCH_MOVIE_TITLE)!!, pageIndex))
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        val layoutManager = endlessRecyclerViewSearchResult.layoutManager as LinearLayoutManager
+        outState.putInt(KEY_POSITION_INDEX, layoutManager.findFirstVisibleItemPosition())
+        outState.putParcelableArrayList(KEY_MOVIES, adapterMovies.getMovies())
+        outState.putInt(KEY_PAGE_INDEX, pageIndex)
+        super.onSaveInstanceState(outState)
     }
 
     @OnResponse

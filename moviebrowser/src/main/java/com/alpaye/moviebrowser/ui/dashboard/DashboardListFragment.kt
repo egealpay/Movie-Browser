@@ -11,6 +11,10 @@ import com.alpaye.moviebrowser.ui.moviedetails.MovieDetailsActivity
 import com.monitise.mea.android.ui.adapters.MTSViewHolder
 import com.monitise.mea.android.ui.views.MTSEndlessRecyclerView
 
+const private val KEY_POSITION_INDEX = "positionIndex"
+const private val KEY_PAGE_INDEX = "pageIndex"
+const private val KEY_MOVIES = "movies"
+
 abstract class DashboardListFragment : BaseFragment(),
         MTSEndlessRecyclerView.OnEndReachedListener,
         MTSViewHolder.OnItemClickListener {
@@ -21,12 +25,23 @@ abstract class DashboardListFragment : BaseFragment(),
     override fun getResourceLayoutId() = R.layout.fragment_dashboard_list
 
     private var pageIndex = 1
+    private var positionIndex = 0
 
-    protected val adapterMovies: MoviesRecyclerAdapter by lazy { MoviesRecyclerAdapter(listener = this) }
+    private lateinit var adapterMovies: MoviesRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getMovies(pageIndex)
+        if (null == savedInstanceState) {
+            adapterMovies = MoviesRecyclerAdapter(listener = this)
+            getMovies(pageIndex)
+        } else {
+            positionIndex = savedInstanceState.getInt(KEY_POSITION_INDEX)
+            pageIndex = savedInstanceState.getInt(KEY_PAGE_INDEX)
+            adapterMovies = MoviesRecyclerAdapter(
+                    savedInstanceState.getParcelableArrayList(KEY_MOVIES),
+                    this
+            )
+        }
     }
 
     override fun initUserInterface(inflater: LayoutInflater, rootView: View) {
@@ -36,7 +51,16 @@ abstract class DashboardListFragment : BaseFragment(),
             adapter = adapterMovies
             setLoading(false)
             setOnEndReachedListener(this@DashboardListFragment)
+            scrollToPosition(positionIndex)
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        val layoutManager = endlessRecyclerViewDashboard.layoutManager as LinearLayoutManager
+        outState.putInt(KEY_POSITION_INDEX, layoutManager.findFirstVisibleItemPosition())
+        outState.putParcelableArrayList(KEY_MOVIES, adapterMovies.getMovies())
+        outState.putInt(KEY_PAGE_INDEX, pageIndex)
+        super.onSaveInstanceState(outState)
     }
 
     protected fun updateList(movies: ArrayList<Movie>?){

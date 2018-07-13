@@ -1,6 +1,7 @@
 apply from: 'http://f5.pozitron.com/android/monitise-android-app.gradle'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 def TMDB_API_KEY = "\"65dd7f149cc5dc1f35fbedbc35c534ed\""
 
@@ -9,6 +10,11 @@ monitise {
 }
 
 android {
+
+    androidExtensions {
+        experimental = true
+    }
+
     compileSdkVersion config.compileSdkVersion
     defaultConfig {
         applicationId "com.alpaye.moviebrowser"
