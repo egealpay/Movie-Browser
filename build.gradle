@@ -27,7 +27,8 @@ buildscript {
             monitise_networkbus     : "2.0.0",
             monitise_retrofit       : "2.1.0",
             monitise_caki           : "1.0.0-SNAPSHOT",
-            network                 : "2.1.0"
+            network                 : "2.1.0",
+            room                    : "1.1.1"
     ]
 
     repositories {

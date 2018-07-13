@@ -15,6 +15,7 @@ import android.widget.EditText
 import butterknife.BindView
 import com.alpaye.moviebrowser.R
 import com.alpaye.moviebrowser.core.BaseActivity
+import com.alpaye.moviebrowser.ui.favoritemovie.FavoriteMovieActivity
 import com.alpaye.moviebrowser.ui.moviesearch.SearchResultActivity
 import com.alpaye.moviebrowser.ui.settings.SettingsActivity
 
@@ -86,8 +87,9 @@ class DashboardActivity : BaseActivity(),
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.drawer_view_item_settings -> startActivity(SettingsActivity.newIntent(this))
+            R.id.drawer_view_item_favorites -> startActivity(FavoriteMovieActivity.newIntent(this))
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true

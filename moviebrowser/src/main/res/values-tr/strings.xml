@@ -14,4 +14,5 @@
     <string name="settings_language">Dil: </string>
     <string name="settings_language_english">İngilizce</string>
     <string name="settings_language_turkish">Türkçe</string>
+    <string name="favorites">Favoriler</string>
 </resources>

@@ -21,6 +21,7 @@
         <activity android:name=".ui.moviedetails.MovieDetailsActivity" />
         <activity android:name=".ui.moviesearch.SearchResultActivity" />
         <activity android:name=".ui.settings.SettingsActivity" />
+        <activity android:name=".ui.favoritemovie.FavoriteMovieActivity" />
     </application>
 
 </manifest>

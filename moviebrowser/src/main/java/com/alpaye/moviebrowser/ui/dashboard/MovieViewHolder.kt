@@ -29,7 +29,8 @@ class MovieViewHolder(
     lateinit var textViewMovieOverview: TextView
 
     fun bindMovie(movie: Movie) {
-        simpleDraweeViewMoviePoster.setImageURI(Uri.parse(MTSNetworkStack.getInstance().getUrl("posterBaseUrl") + movie.poster))
+        simpleDraweeViewMoviePoster.setImageURI(Uri.parse(MTSNetworkStack.getInstance().getUrl("posterBaseUrl") + movie.poster)
+        )
         textViewMovieTitle.text = movie.title
         textViewMovieOverview.text = movie.overview
     }

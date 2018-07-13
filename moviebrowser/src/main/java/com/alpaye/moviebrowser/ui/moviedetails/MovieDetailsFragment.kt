@@ -7,12 +7,15 @@ import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import butterknife.BindView
 import butterknife.OnClick
 import com.alpaye.moviebrowser.R
 import com.alpaye.moviebrowser.core.BaseFragment
+import com.alpaye.moviebrowser.database.FavoriteMovieDatabase
 import com.alpaye.moviebrowser.network.request.MovieDetailRequest
 import com.alpaye.moviebrowser.network.response.MovieDetailResponseModel
+import com.alpaye.moviebrowser.ui.dashboard.Movie
 import com.alpaye.moviebrowser.util.Util
 import com.facebook.drawee.view.SimpleDraweeView
 import com.monitise.mea.android.network.bus.OnResponse
@@ -24,6 +27,8 @@ class MovieDetailsFragment : BaseFragment() {
 
     private var movieTitle: String? = null
     private var imdbId: String? = null
+    private var movieOverview: String? = null
+    private var posterPath: String? = null
 
     companion object {
         private const val KEY_MOVIE_ID = "keyMovieId"
@@ -90,6 +95,8 @@ class MovieDetailsFragment : BaseFragment() {
 
         movieTitle = response.title
         imdbId = response.imdbId
+        movieOverview = response.overview
+        posterPath = response.poster
     }
 
     @OnClick(R.id.activity_movie_details_imagebutton_imdb)
@@ -104,7 +111,11 @@ class MovieDetailsFragment : BaseFragment() {
 
     @OnClick(R.id.activity_movie_details_imagebutton_favorite)
     fun addMovieToFavorites() {
-        //ToDo: Implement Room
+        val db = FavoriteMovieDatabase.getFavoriteMovieDatabase(context!!)
+        val favoriteMovie = Movie(poster = posterPath!!, title = movieTitle!!, overview = movieOverview!!)
+        db.favoriteMovieDao().addFavoriteMovie(favoriteMovie)
+
+        Toast.makeText(context, "Added to favorites", Toast.LENGTH_SHORT).show()
     }
 
 }

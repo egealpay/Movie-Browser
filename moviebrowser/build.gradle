@@ -61,6 +61,10 @@ dependencies {
     implementation "com.android.support:design:${libraries.support}"
     implementation "com.android.support:gridlayout-v7:${libraries.support}"
 
+    //Room
+    implementation "android.arch.persistence.room:runtime:${libraries.room}"
+    kapt "android.arch.persistence.room:compiler:${libraries.room}"
+
     //Rounded ImageView
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
